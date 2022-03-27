@@ -1,0 +1,55 @@
+.banner-slider {
+    .slick-list {
+        padding: 0 !important;
+    }
+    .slick-dots {
+        bottom: 30px;
+    }
+}
+.banner-section {
+    height: 320px;
+}
+
+// Inner Hero
+.inner-hero {
+    padding: 25px 0;
+    position: relative;
+    z-index: 1;
+    .container {
+        position: relative;
+        z-index: 1;
+    }
+    .title {
+        font-size: 26px;
+        margin: 0;
+    }
+}
+
+.breadcrumb {
+    margin: 0;
+    li {
+        margin-right: 15px;
+        padding-right: 25px;
+        position: relative;
+        &::before {
+            @include line-ico;
+            content: '\f105';
+            right: 0;
+            top: 8px;
+        }
+        &:last-child {
+            &::before {
+                display: none;
+            }
+        }
+        a {
+            color: $dark;
+            &:hover {
+                color: $base-color;
+            }
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

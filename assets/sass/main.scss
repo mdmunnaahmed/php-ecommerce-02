@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@100;200;300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap');;
+
+@import '_abstracts/_mixins';
+@import '_abstracts/_variables';
+
+@import '_base/_typography';
+
+@import '_components/_buttons';
+
+@import '_layout/_header';
+@import '_layout/_banner';
+@import '_layout/_custom';
+@import '_layout/_footer';
+@import '_layout/_sidebar';
+
+@import '_pages/_account';
+@import '_pages/_contact';
+@import '_pages/_dashboard';
+@import '_pages/_sections';
+
+// Custom
+%flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+%flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Social Icons
+.social-links {
+  @extend %flex;
+  align-items: center;
+  li {
+    padding: 3px;
+    a {
+      width: 40px;
+      height: 40px;
+      @extend %flex-center;
+      font-size: 22px;
+      color: $base-color;
+      border: 1px solid rgba($base-color,.6);
+      border-radius: 50%;
+      @extend %flex-center;
+      &:hover {
+        color: $white;
+        background: $base-color;
+        border-color: $base-color;
+      }
+    }
+  }
+}
+
+// Slick Dots
+.slick-dots {
+  left: 0;
+  li {
+      height: auto;
+      width: auto;
+      &.slick-active {
+            button {
+                background: $base-color;
+            }
+        }
+        button {
+            width: 10px;
+            height: 10px;
+            border-radius: 5px !important;
+            background: rgba($base-color,.2);
+            &::before {
+                display: none;
+            }
+        }
+    }
+}
+.slick-arrow{
+    position: absolute;
+    cursor: pointer;
+    padding: 10px 20px;
+    color: $dark;
+    top: 50%;
+    font-size: 24px;
+    transform: translateY(-50%);
+    &.arrow-left  {
+        left: 0;
+        z-index: 1;
+    }
+    &.arrow-right  {
+        right: 0px;
+        z-index: 1;
+    }
+}
+
+.rating {
+    @extend %flex;
+    li {
+        padding: 0 1px;
+        color: #999;
+    }
+}
+.rating.rating-fill {
+    li {
+        color: $star;
+    }
+}
+
+// Preloader
+.preloader {
+    background: $white;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    @extend %flex-center;
+    z-index: 1111;
+}
