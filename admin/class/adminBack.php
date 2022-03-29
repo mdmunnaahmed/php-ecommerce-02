@@ -282,7 +282,7 @@ class adminBack
                 $query = "INSERT INTO banner(banner_img) VALUE ('$banner_img_name')";
 
                 if (mysqli_query($this->conn, $query)) {
-                    move_uploaded_file($banner_img_tmp_name, './assets/images/banner' . $banner_img_name);
+                    move_uploaded_file($banner_img_tmp_name, './../assets/images/banner' . $banner_img_name);
                     $msg = "Banner Image Successfully Uploaded";
                     return $msg;
                 } else {
@@ -296,6 +296,15 @@ class adminBack
         } else {
             $msg = "Your file format not supported";
             return $msg;
+        }
+    }
+
+    function view_banner()
+    {
+        $query = "SELECT * FROM banner";
+        if (mysqli_query($this->conn, $query)) {
+            $banner_info = mysqli_query($this->conn, $query);
+            return $banner_info;
         }
     }
 }

@@ -77,11 +77,6 @@ $(document).ready(function() {
         $(this).toggleClass('active');
 
     });
-    // card js end
-    $(".main-menu").mCustomScrollbar({
-        setTop: "1px",
-        setHeight: "calc(100% - 90px)",
-    });
     /*chatbar js start*/
     $(function() {
         $('[data-toggle="tooltip"]').tooltip()
