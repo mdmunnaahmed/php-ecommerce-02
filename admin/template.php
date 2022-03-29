@@ -2,7 +2,7 @@
 include("class/adminBack.php");
 session_start();
 $adminId = $_SESSION['id'];
-$adminId = $_SESSION['admin_email'];
+$adminEmail = $_SESSION['admin_email'];
 if (!$adminId) {
     header("location: index.php");
 }
@@ -16,11 +16,6 @@ if (isset($_GET['adminLogout'])) {
 <?php include("includes/head.php") ?>
 
 <body>
-    <div class="fixed-button">
-        <a href="https://codedthemes.com/item/gradient-able-admin-template" target="_blank" class="btn btn-md btn-primary">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro
-        </a>
-    </div>
     <!-- Pre-loader start -->
     <div class="theme-loader">
         <div class="loader-track">
@@ -71,6 +66,8 @@ if (isset($_GET['adminLogout'])) {
                                                 include("views/add-banner-view.php");
                                             } else if ("manage-banner" == $views) {
                                                 include("views/manage-banner-view.php");
+                                            } else if ("update-banner" == $views) {
+                                                include("views/update-banner-view.php");
                                             }
                                         }
 

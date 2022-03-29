@@ -1,7 +1,14 @@
 <?php
 $obj_adminBack = new adminBack();
-if (isset($_POST['banner_btn'])) {
-    $msg = $obj_adminBack->addBanner($_POST);
+
+if (isset($_POST['u_banner_btn'])) {
+    $msg = $obj_adminBack->updateBanner($_POST);
+}
+if (isset($_GET['status'])) {
+    $id = $_GET['id'];
+    if ($_GET['status'] == 'update') {
+        $view_banner = $obj_adminBack->view_edit_banner($id);
+    }
 }
 ?>
 
@@ -13,9 +20,10 @@ if (isset($_POST['banner_btn'])) {
 
 
 <form action="" method="POST" class="w-100 ctg-form" enctype="multipart/form-data">
+    <input type="hidden" name="banner_id" value="<?php echo $view_banner['banner_id'] ?>">
     <div class="img-wrapper mx-auto">
         <div class="upload_image">
-            <img id="upload_img" src="" alt="">
+            <img id="upload_img" src="./../assets/images/banner/<?php echo $view_banner['banner_img'] ?>" alt="">
         </div>
         <div class="content">
             <span class="icon"><i class="fas fa-cloud-upload-alt"></i></span>
@@ -25,8 +33,8 @@ if (isset($_POST['banner_btn'])) {
         </div>
     </div>
     <button onclick="uploadBtnActive()" id="upload_btn" type="button" class="btn btn-primary w-100">Add Banner Image</button>
-    <input name="banner_img" id="banner_img" type="file" class="form-control" placeholder="Enter Banner Image" hidden>
-    <button name="banner_btn" type="submit" class="btn btn-primary w-100 mt-4">Upload Banner Image</button>
+    <input name="u_banner_img" id="banner_img" type="file" class="form-control" placeholder="Enter Banner Image" hidden>
+    <button name="u_banner_btn" type="submit" class="btn btn-primary w-100 mt-4">Upload Banner Image</button>
 </form>
 
 

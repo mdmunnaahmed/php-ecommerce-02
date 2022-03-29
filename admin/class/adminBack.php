@@ -282,7 +282,7 @@ class adminBack
                 $query = "INSERT INTO banner(banner_img) VALUE ('$banner_img_name')";
 
                 if (mysqli_query($this->conn, $query)) {
-                    move_uploaded_file($banner_img_tmp_name, './../assets/images/banner' . $banner_img_name);
+                    move_uploaded_file($banner_img_tmp_name, './../assets/images/banner/' . $banner_img_name);
                     $msg = "Banner Image Successfully Uploaded";
                     return $msg;
                 } else {
@@ -305,6 +305,56 @@ class adminBack
         if (mysqli_query($this->conn, $query)) {
             $banner_info = mysqli_query($this->conn, $query);
             return $banner_info;
+        }
+    }
+
+    function view_edit_banner($id)
+    {
+        $query = "SELECT * FROM banner WHERE banner_id = $id";
+        if (mysqli_query($this->conn, $query)) {
+            $banner_info = mysqli_query($this->conn, $query);
+            $banner_info = mysqli_fetch_assoc($banner_info);
+            return $banner_info;
+        }
+    }
+
+    function deleteBanner($id)
+    {
+        $query = "DELETE FROM banner WHERE banner_id = $id";
+        if (mysqli_query($this->conn, $query)) {
+            $msg = "Banner Successfully Deleted";
+            return $msg;
+        }
+    }
+
+    function updateBanner($id)
+    {
+        $banner_id = $id['banner_id'];
+        $banner_img_name = $_FILES['u_banner_img']['name'];
+        $banner_img_size = $_FILES['u_banner_img']['size'];
+        $banner_img_tmp_name = $_FILES['u_banner_img']['tmp_name'];
+        $banner_ext = pathinfo($banner_img_name, PATHINFO_EXTENSION);
+
+        if ($banner_ext == 'png' or $banner_ext == 'jpg' or $banner_ext == 'jpeg') {
+            if ($banner_img_size <= 20097152) {
+
+                $query = "UPDATE banner SET banner_img = '$banner_img_name' WHERE banner_id = $banner_id";
+
+                if (mysqli_query($this->conn, $query)) {
+                    move_uploaded_file($banner_img_tmp_name, './../assets/images/banner/' . $banner_img_name);
+                    $msg = "Banner Image Successfully Updated";
+                    return $msg;
+                } else {
+                    $msg = "Faild to add";
+                    return $msg;
+                }
+            } else {
+                $msg = "Your file size should be less than 2Mib";
+                return $msg;
+            }
+        } else {
+            $msg = "Your file format not supported";
+            return $msg;
         }
     }
 }

@@ -2,10 +2,10 @@
 $obj_adminBack = new adminBack();
 $msg = $obj_adminBack->view_banner();
 
-if (isset($_GET['banner'])) {
+if (isset($_GET['status'])) {
     $banner_id = $_GET['id'];
-    if ($_GET['banner'] == 'delete') {
-        // $msg = $obj_adminBack->deleteProduct($pro_id);
+    if ($_GET['status'] == 'delete') {
+        $del = $obj_adminBack->deleteBanner($banner_id);
     }
 }
 ?>
@@ -39,8 +39,8 @@ if (isset($_GET['banner'])) {
                     ?></td>
 
                 <td>
-                    <a class="btn-sm btn btn-info" href="update-banner.php?banner=update&&id=<?php echo $banner_info['banner_id'] ?>">Edit</a>
-                    <a class="btn-sm btn btn-danger" href="?banner=delete&&id=<?php echo $banner_info['banner_id'] ?>">Delete</a>
+                    <a class="btn-sm btn btn-info" href="update-banner.php?status=update&&id=<?php echo $banner_info['banner_id'] ?>">Edit</a>
+                    <a class="btn-sm btn btn-danger" href="?status=delete&&id=<?php echo $banner_info['banner_id'] ?>">Delete</a>
                 </td>
             </tr>
 
