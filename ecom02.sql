@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2022 at 06:34 AM
+-- Generation Time: Mar 29, 2022 at 02:25 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -48,6 +48,7 @@ INSERT INTO `adminlog` (`id`, `admin_email`, `admin_pass`) VALUES
 
 CREATE TABLE `banner` (
   `banner_id` int(11) NOT NULL,
+  `banner_status` tinyint(4) NOT NULL DEFAULT 1,
   `banner_img` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -55,8 +56,11 @@ CREATE TABLE `banner` (
 -- Dumping data for table `banner`
 --
 
-INSERT INTO `banner` (`banner_id`, `banner_img`) VALUES
-(1, '20181204_202553.jpg');
+INSERT INTO `banner` (`banner_id`, `banner_status`, `banner_img`) VALUES
+(7, 1, 'bg.png'),
+(8, 1, 'bg2.png'),
+(9, 1, 'bg3.png'),
+(10, 0, 'bg2.png');
 
 -- --------------------------------------------------------
 
@@ -78,7 +82,7 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`ctg_id`, `ctg_icon`, `ctg_name`, `ctg_des`, `ctg_status`) VALUES
 (5, '<i class=\"lab la-apple\"></i>', 'Apple', 'Apple Inc. is an American multinational technology company that specializes in consumer electronics, software and online services. Apple is the largest ...', 1),
-(6, '<i class=\"las la-carrot\"></i>', 'Orange', 'An orange has a tough shiny orange skin that holds acid in outside layer. Inside, the fruit is divided into \"segments\", which have thin tough skins that hold ...', 0),
+(6, '<i class=\"las la-carrot\"></i>', 'Orange', 'An orange has a tough shiny orange skin that holds acid in outside layer. Inside, the fruit is divided into \"segments\", which have thin tough skins that hold ...', 1),
 (7, '<i class=\"las la-carrot\"></i>', 'Orange', 'An orange has a tough shiny orange skin that holds acid in outside layer. Inside, the fruit is divided into \"segments\", which have thin tough skins that hold ...', 1);
 
 -- --------------------------------------------------------
@@ -104,7 +108,8 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_des`, `product_ctg`, `product_img`, `product_status`) VALUES
 (1, 'Mac Book Pro - M-50 the Pro series Laptopa', 1500, 'Mac Book Pro - M-50 the Pro series LaptopMac Book Pro - M-50 the Pro series Laptop', 0, 'Copy of 20191018_170306.jpg', 1),
 (3, 'Pro series Laptop', 1200, 'http://localhost/php-ccomerce-02/admin/manage-product.php', 0, 'IMG_20180121_151239186.jpg', 1),
-(4, 'Msi Motherboard', 11111, 'http://localhost/php-ccomerce-02/admin/manage-product.php', 1, 'IMG_20180215_114705858.jpg', 1);
+(4, 'Msi Motherboard', 11111, 'http://localhost/php-ccomerce-02/admin/manage-product.php', 1, 'IMG_20180215_114705858.jpg', 1),
+(5, 'Msi Motherboard', 143, 'form.onsubmit = (e) => {\r\n            e.preventDefault();\r\n        }', 5, '20181204_202553.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -173,7 +178,7 @@ ALTER TABLE `adminlog`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -185,7 +190,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

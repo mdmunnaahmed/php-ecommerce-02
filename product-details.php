@@ -1,120 +1,30 @@
-    <!-- meta tags and other links -->
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-Shop Online Shopping Html Template</title>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png" sizes="16x16">
-    <!-- bootstrap 5  -->
-    <link rel="stylesheet" href="assets/css/lib/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/lib/animate.css">
-    <!-- Icon Link  -->
-    <link rel="stylesheet" href="assets/css/all.min.css"> 
-    <link rel="stylesheet" href="assets/css/line-awesome.min.css">
+<?php include "partials/template-top.php" ?>
 
-    <!-- Plugin Link -->
-    <link rel="stylesheet" href="assets/css/lib/slick.css">
-    <link rel="stylesheet" href="assets/css/lib/odometer.css">
+<body>
+    <div class="overlay"></div>
 
-    <!-- main css -->
-    <link rel="stylesheet" href="assets/css/main.css">
-</head>
-    <body data-bs-spy="scroll" data-bs-offset="170" data-bs-target=".privacy-policy-sidebar-menu">
-        <div class="overlay"></div>
+    <?php include "partials/header.php" ?>
 
-    <div class="header">
-    <div class="header-top">
-        <div class="container">
-            <div class="header-top-wrapper d-flex flex-wrap justify-content-between align-items-center">
-                <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="logo"></a></div>
-                <!-- Logo End -->
-                <div class="search-wrapper">
-                    <form class="search-form">
-                        <div class="form-group">
-                            <input type="text" class="form-control form--control" placeholder="Search for Products...">
-                            <button type="submit" class="btn btn--md"><i class="las la-search"></i></button>
-                        </div>
-                    </form> 
-                    <button class="btn-close d-md-none"></button>
-                </div>
-                <!-- Search Form End -->
-                <div class="header-contact d-flex align-items-center">
-                    <select class="form--select shadow-none outline-0 border-0 ms-4">
-                        <option>English</option>
-                        <option>Bangla</option>
-                        <option>Hindi</option>
-                    </select>
-                    <select class="form--select shadow-none outline-0 border-0 ms-4">
-                        <option>USD</option>
-                        <option>TK</option>
-                        <option>NSD</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="header-bottom section-bg">
-        <div class="container">
-            <div class="header-bottom-area">
-                <div class="all-categories-wrapper">
-                    <a href="#0" class="all-categories"><span class="icon icon-left"><i class="las la-bars"></i></span> ALL CATEGORIES</a>
-                </div>
-                <ul class="menu">
-                    <li>
-                        <a href="index.html">HOME</a>
-                    </li>
-                    <li>
-                        <a href="best-selling.html">BEST SELLING</a>
-                    </li>
-                    <li>
-                        <a href="news.html">NEWS</a>
-                    </li>
-                    <li>
-                        <a href="faq.html">FAQs</a>
-                    </li>
-                    <li>
-                        <a href="#0">OTHERS</a>
-                        <ul class="sub-menu">
-                            <li><a href="privacy-policy.html">PRIVACY POLICY</a></li>
-                            <li><a href="terms-conditions.html">TERMS OF CONDITIONS</a></li>
-                            <li><a href="about.html">ABOUT US</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="contact.html">CONTACT</a>
-                    </li>
-                    <button class="btn-close btn-close-white menu-close"></button>
-                </ul>
-                <!-- Menu Ends -->
-
-                <div class="header-trigger-wrapper d-flex align-items-center">
-                    <ul class="user-nav-links d-flex flex-wrap align-items-center">
-                        <li><a href="#0" class="search-toggler d-md-none"><i class="las fa-search"></i></a></li>
-                        <li><a href="dashboard.html" class="active"><i class="lar fa-user"></i></a></li>
-                        <li><a href="cart.html"><i class="las fa-shopping-cart"></i> <span class="badge badge--round">02</span></a></li>
-                    </ul>
-                    <!-- User Nav Links End -->
-
-                    <div class="header-trigger d-block d-lg-none ms-4"><span></span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
     <!-- inner hero section start -->
-<div class="inner-hero section-bg overflow-hidden">
-    <div class="container">
-          <div class="inner-hero-wrapper d-flex flex-wrap align-items-center">
+    <div class="inner-hero section-bg overflow-hidden">
+        <div class="container">
+            <div class="inner-hero-wrapper d-flex flex-wrap align-items-center">
                 <h3 class="title me-5">Product Details</h3>
                 <ul class="breadcrumb justify-content-center">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li>Product Details</li>
                 </ul>
-          </div>
+            </div>
+        </div>
     </div>
-</div>
-<!-- inner hero section end -->
+    <!-- inner hero section end -->
+
+    <?php
+    function generateRandomString($length = 10)
+    {
+        return substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length / strlen($x)))), 1, $length);
+    }
+    ?>
 
     <!-- Product Details Starts Here -->
     <div class="product-section mt-5">
@@ -187,7 +97,7 @@
                                 <del class="main-price ms-3">$150.50</del>
                             </div>
                             <span class="badge badge--md badge--success badge--transparent">IN STOCK</span>
-                            <p class="product-info">A product is the item offered for sale. A product can be a service or an item.  Every product is made at a cost and each is sold at a price. The price that can be charged depends on the market,.</p>
+                            <p class="product-info">A product is the item offered for sale. A product can be a service or an item. Every product is made at a cost and each is sold at a price. The price that can be charged depends on the market,.</p>
                             <div class="product-color-wrapper">
                                 <h5 class="title">Color :</h5>
                                 <form class="product-color">
@@ -271,15 +181,21 @@
                                 <div class="delivery-info section-bg">
                                     <div class="delivery-info-item">
                                         <div class="icon"><i class="las la-truck"></i></div>
-                                        <div class="content"><p>Free Shipping apply to all orders over $100</p></div>
+                                        <div class="content">
+                                            <p>Free Shipping apply to all orders over $100</p>
+                                        </div>
                                     </div>
                                     <div class="delivery-info-item">
                                         <div class="icon"><i class="las la-thumbs-up"></i></div>
-                                        <div class="content"><p>Guranteed 100% Original Product from E-shop.</p></div>
+                                        <div class="content">
+                                            <p>Guranteed 100% Original Product from E-shop.</p>
+                                        </div>
                                     </div>
                                     <div class="delivery-info-item">
                                         <div class="icon"><i class="lab la-product-hunt"></i></div>
-                                        <div class="content"><p>1 Day Returns if you have any complain about the products.</p></div>
+                                        <div class="content">
+                                            <p>1 Day Returns if you have any complain about the products.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -366,43 +282,43 @@
                             <div class="tab-pane show fade" id="reviews">
                                 <div class="reviews-wrapper">
                                     <h4 class="text--warning mb-2">5.00 <i class="las la-star"></i> (2)</h3>
-                                    <h4 class="title mb-4">Review for : Corsair - HU-05 Wireless Headset Blue</h4>
-                                    <ul class="review-item-wrapper">
-                                        <li class="review-item">
-                                            <div class="review-item__thumb"><img src="assets/images/comment/item1.png" alt="comment"></div>
-                                            <div class="review-item__content">
-                                                <ul class="rating rating-fill">
-                                                    <li><i class="las la-star"></i></li>
-                                                    <li><i class="las la-star"></i></li>
-                                                    <li><i class="las la-star"></i></li>
-                                                    <li><i class="las la-star"></i></li>
-                                                    <li><i class="las la-star"></i></li>
-                                                </ul>
-                                                <div class="name-wrapper d-flex flex-wrap align-items-center">
-                                                    <h6 class="name me-2">John Doe</h6>--
-                                                    <span class="date ms-2">19 Jub, 2021</span>
+                                        <h4 class="title mb-4">Review for : Corsair - HU-05 Wireless Headset Blue</h4>
+                                        <ul class="review-item-wrapper">
+                                            <li class="review-item">
+                                                <div class="review-item__thumb"><img src="assets/images/comment/item1.png" alt="comment"></div>
+                                                <div class="review-item__content">
+                                                    <ul class="rating rating-fill">
+                                                        <li><i class="las la-star"></i></li>
+                                                        <li><i class="las la-star"></i></li>
+                                                        <li><i class="las la-star"></i></li>
+                                                        <li><i class="las la-star"></i></li>
+                                                        <li><i class="las la-star"></i></li>
+                                                    </ul>
+                                                    <div class="name-wrapper d-flex flex-wrap align-items-center">
+                                                        <h6 class="name me-2">John Doe</h6>--
+                                                        <span class="date ms-2">19 Jub, 2021</span>
+                                                    </div>
+                                                    <p>Here's something we've learned from over a decade running A/B tests on hundreds of Product Detail Pages: Optimizing your product descriptions is one of the highest-return, lowest-investment improvements an ecommerce manager can make.</p>
                                                 </div>
-                                                <p>Here's something we've learned from over a decade running A/B tests on hundreds of Product Detail Pages: Optimizing your product descriptions is one of the highest-return, lowest-investment improvements an ecommerce manager can make.</p>
-                                            </div>
-                                        </li>
-                                        <li class="review-item">
-                                            <div class="review-item__thumb"><img src="assets/images/comment/item2.png" alt="comment"></div>
-                                            <div class="review-item__content">
-                                                <ul class="rating rating-fill">
-                                                    <li><i class="las la-star"></i></li>
-                                                    <li><i class="las la-star"></i></li>
-                                                    <li><i class="las la-star"></i></li>
-                                                    <li><i class="las la-star"></i></li>
-                                                    <li><i class="las la-star"></i></li>
-                                                </ul>
-                                                <div class="name-wrapper d-flex flex-wrap align-items-center">
-                                                    <h6 class="name me-2">John Doe</h6>--
-                                                    <span class="date ms-2">19 Jub, 2021</span>
+                                            </li>
+                                            <li class="review-item">
+                                                <div class="review-item__thumb"><img src="assets/images/comment/item2.png" alt="comment"></div>
+                                                <div class="review-item__content">
+                                                    <ul class="rating rating-fill">
+                                                        <li><i class="las la-star"></i></li>
+                                                        <li><i class="las la-star"></i></li>
+                                                        <li><i class="las la-star"></i></li>
+                                                        <li><i class="las la-star"></i></li>
+                                                        <li><i class="las la-star"></i></li>
+                                                    </ul>
+                                                    <div class="name-wrapper d-flex flex-wrap align-items-center">
+                                                        <h6 class="name me-2">John Doe</h6>--
+                                                        <span class="date ms-2">19 Jub, 2021</span>
+                                                    </div>
+                                                    <p>Here's something we've learned from over a decade running A/B tests on hundreds of Product Detail Pages: Optimizing your product descriptions is one of the highest-return, lowest-investment improvements an ecommerce manager can make.</p>
                                                 </div>
-                                                <p>Here's something we've learned from over a decade running A/B tests on hundreds of Product Detail Pages: Optimizing your product descriptions is one of the highest-return, lowest-investment improvements an ecommerce manager can make.</p>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                            </li>
+                                        </ul>
                                 </div>
                                 <div class="add-review-wrapper">
                                     <h4 class="border-bottom pb-2 mt-4 mb-4">Add a Review</h4>
@@ -448,119 +364,9 @@
     </div>
     <!-- Product Details Ends Here -->
 
-    <!-- Feature Info Starts Here -->
-<div class="feature-info-section section-bg mt-5 py-4">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-info-item">
-                    <div class="feature-info-item__icon">
-                        <i class="las la-shuttle-van"></i>
-                    </div>
-                    <div class="feature-info-item__content">
-                        <h5 class="title">Free Home Delivery</h5>
-                        <p>Phasellus blandit massa enim elit of passage varius nunc.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-info-item">
-                    <div class="feature-info-item__icon">
-                        <i class="las la-undo-alt"></i>
-                    </div>
-                    <div class="feature-info-item__content">
-                        <h5 class="title">30 Days Free Return</h5>
-                        <p>Phasellus blandit massa enim elit of passage varius nunc.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-info-item">
-                    <div class="feature-info-item__icon">
-                        <i class="las la-headset"></i>
-                    </div>
-                    <div class="feature-info-item__content">
-                        <h5 class="title">24/7 Online Support</h5>
-                        <p>Phasellus blandit massa enim elit of passage varius nunc.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Feature Info Ends Here -->
 
+    <?php include "partials/feature.php" ?>
 
-<!-- Footer Section Starts Here -->
-<footer class="footer-section">
-    <div class="footer-top">
-        <div class="container">
-            <div class="row gy-4 justify-content-between">
-                <div class="col-lg-4 col-sm-6">
-                    <div class="footer-widget">
-                        <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="logo"></a></div>
-                        <p>Ecommerce is the buying and selling of goods and services over the Internet. It is conducted over computers, and other smart devices.</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-sm-5">
-                    <div class="footer-widget">
-                        <h4 class="footer-widget__title">Useful Links</h3>
-                        <ul class="footer-links m-0">
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="faq.html">FAQs</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                            <li><a href="contact.html">Get Help</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-sm-6">
-                    <div class="footer-widget">
-                        <h4 class="footer-widget__title">My Accounts</h3>
-                        <ul class="footer-links m-0">
-                            <li><a href="sign-in.html">Login</a></li>
-                            <li><a href="sign-in.html">Returns</a></li>
-                            <li><a href="sign-in.html">Wishlist</a></li>
-                            <li><a href="sign-in.html">My Orders</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-5">
-                    <div class="footer-widget">
-                        <h4 class="footer-widget__title">Contacts & Supports</h3>
-                        <ul class="footer-contacts m-0">
-                            <li><p><i class="las la-map-marked"></i> 123 Street, Old Trafford, NewYork, USA</p></li>
-                            <li><a href="mailto:user@gmail.com"><i class="las la-envelope"></i> user@gmail.com</a></li>
-                        </ul>
-                        <h6 class="fs-lg mt-3">Need Help ? Anytime Call</h6>
-                        <h5 class="mt-2"><a href="tel:023485" class="text--base"><i class="las la-phone-volume"></i> +09-8192 2435</a></h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="footer-bottom-wrapper border-top py-3 d-flex flex-wrap justify-content-md-between justify-content-center text-center">
-                <p class="copyright">&copy; 2021 All Rights Reserved by <a href="#0" class="text--base">The Company</a></p>
-                <div class="payments-gateway mt-md-0 mt-3"><img src="assets/images/footer/payments.png" alt="footer"></div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- Footer Section Ends Here -->
-    
+    <?php include "partials/footer.php" ?>
 
-<!-- jQuery library -->
-<script src="assets/js/lib/jquery-3.6.0.min.js"></script>
-<!-- bootstrap 5 js -->
-<script src="assets/js/lib/bootstrap.min.js"></script>
-
-<!-- Pluglin Link -->
-<script src="assets/js/lib/slick.min.js"></script>
-<script src="assets/js/lib/odometer.min.js"></script>
-<script src="assets/js/lib/viewport.jquery.js"></script>
-
-<!-- main js -->
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+    <?php include "partials/template-bottom.php" ?>

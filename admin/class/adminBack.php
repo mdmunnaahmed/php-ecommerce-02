@@ -55,12 +55,17 @@ class adminBack
         $ctg_status = $data['ctg_status'];
 
         $query = "INSERT INTO category(ctg_name, ctg_icon, ctg_des, ctg_status) VALUE ('$ctg_name', '$ctg_icon', '$ctg_des', $ctg_status)";
-        if (mysqli_query($this->conn, $query)) {
-            $message = "Category Added Successfully";
-            return $message;
-            header('location:manage-category.php');
+        if (!"ctg_name" == $ctg_name) {
+            if (mysqli_query($this->conn, $query)) {
+                $message = "Category Added Successfully";
+                return $message;
+                header('location:manage-category.php');
+            } else {
+                $message = "Failded to Add Categroy";
+                return $message;
+            }
         } else {
-            $message = "Failded to Add Categroy";
+            $message = "This Category is Already in Category List";
             return $message;
         }
     }
@@ -129,9 +134,14 @@ class adminBack
         $ctg_status = $recieve_data['u_ctg_status'];
 
         $query = "UPDATE category SET ctg_name = '$ctg_name', ctg_des = '$ctg_des', ctg_status = $ctg_status WHERE ctg_id = '$id' ";
-        if (mysqli_query($this->conn, $query)) {
-            $msg = "Category Successfully Updated";
-            return $msg;
+        if (!"ctg_name" == $ctg_name) {
+            if (mysqli_query($this->conn, $query)) {
+                $msg = "Category Successfully Updated";
+                return $msg;
+            }
+        } else {
+            $message = "This Category is Already in Category List";
+            return $message;
         }
     }
 
@@ -147,15 +157,16 @@ class adminBack
         $product_img_tmp_name = $_FILES['product_img']['tmp_name'];
         $product_ext = pathinfo($product_img_name, PATHINFO_EXTENSION);
 
+        $product_type = $recieve_data['product_type'];
         $product_status = $recieve_data['product_status'];
 
         if ($product_ext == 'png' or $product_ext == 'jpg' or $product_ext == 'jpeg') {
             if ($product_img_size <= 20097152) {
 
-                $query = "INSERT INTO products(product_name, product_price, product_des, product_ctg, product_img ,product_status) VALUE ('$product_name',  $product_price, '$product_des', $product_ctg, '$product_img_name', $product_status)";
+                $query = "INSERT INTO products(product_name, product_price, product_des, product_ctg, product_img, product_type ,product_status) VALUE ('$product_name',  $product_price, '$product_des', $product_ctg, '$product_img_name', $product_type, $product_status)";
 
                 if (mysqli_query($this->conn, $query)) {
-                    move_uploaded_file($product_img_tmp_name, 'upload/' . $product_img_name);
+                    move_uploaded_file($product_img_tmp_name, './../assets/images/products/' . $product_img_name);
                     $msg = "Product Added Successfully";
                     return $msg;
                 } else {
@@ -175,6 +186,42 @@ class adminBack
     function displayProduct()
     {
         $query = "SELECT * FROM products_details_info";
+        if (mysqli_query($this->conn, $query)) {
+            $product = mysqli_query($this->conn, $query);
+            return $product;
+        }
+    }
+
+    function displayFeatureProduct()
+    {
+        $query = "SELECT * FROM products_details_info WHERE product_type = 1";
+        if (mysqli_query($this->conn, $query)) {
+            $product = mysqli_query($this->conn, $query);
+            return $product;
+        }
+    }
+
+    function displayTrandingProduct()
+    {
+        $query = "SELECT * FROM products_details_info WHERE product_type = 2";
+        if (mysqli_query($this->conn, $query)) {
+            $product = mysqli_query($this->conn, $query);
+            return $product;
+        }
+    }
+
+    function displayHotProduct()
+    {
+        $query = "SELECT * FROM products_details_info WHERE product_type = 3 LIMIT 5";
+        if (mysqli_query($this->conn, $query)) {
+            $product = mysqli_query($this->conn, $query);
+            return $product;
+        }
+    }
+
+    function displayLatestProduct()
+    {
+        $query = "SELECT * FROM products_details_info WHERE product_type = 4";
         if (mysqli_query($this->conn, $query)) {
             $product = mysqli_query($this->conn, $query);
             return $product;
@@ -240,7 +287,7 @@ class adminBack
 
     function view_product_by_ctg($id)
     {
-        $query = "SELECT * FROM products_details_info WHERE id = $id";
+        $query = "SELECT * FROM products_details_info WHERE ctg_id = $id";
         if (mysqli_query($this->conn, $query)) {
             $pro_info = mysqli_query($this->conn, $query);
             return $pro_info;

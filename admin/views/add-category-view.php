@@ -9,6 +9,9 @@ if (isset($_POST['ctg_btn'])) {
 
 
 <h2 class="mb-5">Add Category</h2>
+<?php if (isset($msg)) {
+    echo $msg;
+} ?>
 <form action="#0" name="ctg-form" method="POST" class="ctg-form w-100">
     <div class="form-group">
         <label for="ctg_name" class="form-label">Category Name</label>
@@ -31,7 +34,4 @@ if (isset($_POST['ctg_btn'])) {
     </div>
     <button name="ctg_btn" type="submit" class="btn btn-primary w-100 mb-2">Add Category</button>
 
-    <?php if (isset($msg)) {
-        echo $msg;
-    } ?>
 </form>

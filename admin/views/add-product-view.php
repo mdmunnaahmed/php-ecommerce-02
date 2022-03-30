@@ -30,6 +30,15 @@ if (isset($_POST['product_btn'])) {
         <input name="product_img" id="product_img" type="file" class="form-control" placeholder="Enter Product Image" required>
     </div>
     <div class="form-group">
+        <label for="product_type" class="form-label">Product Type / <span class="text-primary">Add Product As</span></label>
+        <select name="product_type" id="product_type" class="form-control">
+            <option value="1">Featured</option>
+            <option value="2">Hot Deals</option>
+            <option value="3">Tranding</option>
+            <option value="4">Latest</option>
+        </select>
+    </div>
+    <div class="form-group">
         <label for="product_ctg" class="form-label">Product Category</label>
         <select name="product_ctg" id="product_ctg" class="form-select form-control">
             <option>Please Select a Category</option>
