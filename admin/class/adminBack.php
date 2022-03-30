@@ -55,17 +55,13 @@ class adminBack
         $ctg_status = $data['ctg_status'];
 
         $query = "INSERT INTO category(ctg_name, ctg_icon, ctg_des, ctg_status) VALUE ('$ctg_name', '$ctg_icon', '$ctg_des', $ctg_status)";
-        if (!"ctg_name" == $ctg_name) {
-            if (mysqli_query($this->conn, $query)) {
-                $message = "Category Added Successfully";
-                return $message;
-                header('location:manage-category.php');
-            } else {
-                $message = "Failded to Add Categroy";
-                return $message;
-            }
+
+        if (mysqli_query($this->conn, $query)) {
+            $message = "Category Added Successfully";
+            return $message;
+            header('location:manage-category.php');
         } else {
-            $message = "This Category is Already in Category List";
+            $message = "Failded to Add Categroy";
             return $message;
         }
     }
@@ -133,8 +129,8 @@ class adminBack
         $ctg_des = $recieve_data['u_ctg_des'];
         $ctg_status = $recieve_data['u_ctg_status'];
 
-        $query = "UPDATE category SET ctg_name = '$ctg_name', ctg_des = '$ctg_des', ctg_status = $ctg_status WHERE ctg_id = '$id' ";
-        if (!"ctg_name" == $ctg_name) {
+        if ("ctg_name" == $ctg_name) {
+            $query = "UPDATE category SET ctg_name = '$ctg_name', ctg_des = '$ctg_des', ctg_status = $ctg_status WHERE ctg_id = '$id' ";
             if (mysqli_query($this->conn, $query)) {
                 $msg = "Category Successfully Updated";
                 return $msg;
@@ -144,6 +140,35 @@ class adminBack
             return $message;
         }
     }
+
+    // Add Brand
+    function add_brands($data)
+    {
+        $brand_name = $data['brand_name'];
+        $brand_icon = $data['brand_icon'];
+        $brand_des = $data['brand_des'];
+
+        $query = "INSERT INTO brands(brand_name, brand_icon, brand_des) VALUE ('$brand_name', '$brand_icon', '$brand_des')";
+        if (mysqli_query($this->conn, $query)) {
+            $message = "Brand Added Successfully";
+            return $message;
+        } else {
+            $message = "Failded to Add Brand";
+            return $message;
+        }
+    }
+
+    function displayBrands()
+    {
+        $query = "SELECT * FROM category";
+        if (mysqli_query($this->conn, $query)) {
+            $result_ctg = mysqli_query($this->conn, $query);
+            return $result_ctg;
+        } else {
+            echo "Couldn't Load Data Correctly";
+        }
+    }
+
 
     function addProduct($recieve_data)
     {

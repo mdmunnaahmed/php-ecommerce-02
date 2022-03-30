@@ -68,6 +68,8 @@ if (isset($_GET['adminLogout'])) {
                                                 include("views/manage-banner-view.php");
                                             } else if ("update-banner" == $views) {
                                                 include("views/update-banner-view.php");
+                                            } else if ("add-brand" == $views) {
+                                                include("views/add-brand-view.php");
                                             }
                                         }
 
