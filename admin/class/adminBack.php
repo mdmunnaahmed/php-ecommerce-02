@@ -59,7 +59,6 @@ class adminBack
         if (mysqli_query($this->conn, $query)) {
             $message = "Category Added Successfully";
             return $message;
-            header('location:manage-category.php');
         } else {
             $message = "Failded to Add Categroy";
             return $message;
@@ -160,12 +159,45 @@ class adminBack
 
     function displayBrands()
     {
-        $query = "SELECT * FROM category";
+        $query = "SELECT * FROM brands";
         if (mysqli_query($this->conn, $query)) {
             $result_ctg = mysqli_query($this->conn, $query);
             return $result_ctg;
         } else {
             echo "Couldn't Load Data Correctly";
+        }
+    }
+
+    function deleteBrand($id)
+    {
+        $query = "DELETE FROM brands WHERE brand_id = $id";
+        if (mysqli_query($this->conn, $query)) {
+            $msg = "Category Successfully Deleted";
+            return $msg;
+        }
+    }
+
+    function editBrand($id)
+    {
+        $query = "SELECT * FROM brands WHERE brand_id = $id";
+        if (mysqli_query($this->conn, $query)) {
+            $brand_query = mysqli_query($this->conn, $query);
+            $brand_fetch = mysqli_fetch_assoc($brand_query);
+            return $brand_fetch;
+        }
+    }
+
+    function updateBrand($data)
+    {
+        $id = $data['brand_id'];
+        $brand_name = $data['u_brand_name'];
+        $brand_icon = $data['u_brand_icon'];
+        $brand_des = $data['u_brand_des'];
+
+        $query = "UPDATE brands SET brand_name = '$brand_name',brand_icon = '$brand_icon', brand_des = '$brand_icon' WHERE ctg_id = '$id' ";
+        if (mysqli_query($this->conn, $query)) {
+            $msg = "Category Successfully Updated";
+            return $msg;
         }
     }
 

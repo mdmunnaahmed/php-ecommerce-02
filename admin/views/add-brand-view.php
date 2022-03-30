@@ -23,7 +23,7 @@ if (isset($_POST['brand_btn'])) {
     </div>
     <div class="form-group">
         <label for="brand_des" class="form-label">Brand Description</label>
-        <textarea name="brand_des" id="brand_des" type="text" class="form-control" placeholder="Enter Brand Description" required></textarea>
+        <textarea name="brand_des" id="brand_des" class="form-control" placeholder="Enter Brand Description" required></textarea>
     </div>
     <button name="brand_btn" type="submit" class="btn btn-primary w-100 mb-2">Add Brand</button>
 
