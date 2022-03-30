@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2022 at 02:25 AM
+-- Generation Time: Mar 30, 2022 at 06:27 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -98,6 +98,7 @@ CREATE TABLE `products` (
   `product_des` varchar(255) NOT NULL,
   `product_ctg` int(11) NOT NULL,
   `product_img` varchar(255) NOT NULL,
+  `product_type` tinyint(4) NOT NULL DEFAULT 1,
   `product_status` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -105,11 +106,14 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_des`, `product_ctg`, `product_img`, `product_status`) VALUES
-(1, 'Mac Book Pro - M-50 the Pro series Laptopa', 1500, 'Mac Book Pro - M-50 the Pro series LaptopMac Book Pro - M-50 the Pro series Laptop', 0, 'Copy of 20191018_170306.jpg', 1),
-(3, 'Pro series Laptop', 1200, 'http://localhost/php-ccomerce-02/admin/manage-product.php', 0, 'IMG_20180121_151239186.jpg', 1),
-(4, 'Msi Motherboard', 11111, 'http://localhost/php-ccomerce-02/admin/manage-product.php', 1, 'IMG_20180215_114705858.jpg', 1),
-(5, 'Msi Motherboard', 143, 'form.onsubmit = (e) => {\r\n            e.preventDefault();\r\n        }', 5, '20181204_202553.jpg', 1);
+INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_des`, `product_ctg`, `product_img`, `product_type`, `product_status`) VALUES
+(1, 'Mac Book Pro - M-50 the Pro series Laptopa', 1500, 'Mac Book Pro - M-50 the Pro series LaptopMac Book Pro - M-50 the Pro series Laptop', 0, 'Copy of 20191018_170306.jpg', 1, 1),
+(3, 'Pro series Laptop', 1200, 'http://localhost/php-ccomerce-02/admin/manage-product.php', 0, 'IMG_20180121_151239186.jpg', 1, 1),
+(4, 'Msi Motherboard', 11111, 'http://localhost/php-ccomerce-02/admin/manage-product.php', 1, 'IMG_20180215_114705858.jpg', 1, 1),
+(5, 'Msi Motherboard', 143, 'form.onsubmit = (e) => {\r\n            e.preventDefault();\r\n        }', 5, 'item5.png', 1, 1),
+(6, 'Samsung Monitor', 1500, 'Get a wide range of Samsung Monitors in Bangladesh - Curved, UHD, Gaming, Flat & Super Slim, Versatile High-Resolution Monitors and more.', 5, 'bg3.png', 2, 1),
+(7, 'Mac Book Pro - M-50 the Pro series Laptop', 1500, 'Get a wide range of Samsung Monitors in Bangladesh - Curved, UHD, Gaming, Flat & Super Slim, Versatile High-Resolution Monitors and more.', 5, 'item11.png', 3, 1),
+(8, 'Pro series Laptop', 129, 'The Samsung monitors are made to focus on all types of working users for example Photographers, Designers, Video Editors, Entertainment, Gaming, e-Sports, and ...', 6, 'item8.png', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -122,9 +126,13 @@ CREATE TABLE `products_details_info` (
 ,`product_name` varchar(255)
 ,`product_price` int(11)
 ,`product_des` varchar(255)
+,`product_ctg` int(11)
 ,`product_img` varchar(255)
-,`ctg_name` varchar(255)
+,`product_type` tinyint(4)
 ,`product_status` tinyint(4)
+,`ctg_name` varchar(255)
+,`ctg_des` varchar(255)
+,`ctg_icon` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -134,7 +142,7 @@ CREATE TABLE `products_details_info` (
 --
 DROP TABLE IF EXISTS `products_details_info`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `products_details_info`  AS SELECT `products`.`product_id` AS `product_id`, `products`.`product_name` AS `product_name`, `products`.`product_price` AS `product_price`, `products`.`product_des` AS `product_des`, `products`.`product_img` AS `product_img`, `category`.`ctg_name` AS `ctg_name`, `products`.`product_status` AS `product_status` FROM (`products` join `category` on(`products`.`product_ctg` = `category`.`ctg_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `products_details_info`  AS SELECT `products`.`product_id` AS `product_id`, `products`.`product_name` AS `product_name`, `products`.`product_price` AS `product_price`, `products`.`product_des` AS `product_des`, `products`.`product_ctg` AS `product_ctg`, `products`.`product_img` AS `product_img`, `products`.`product_type` AS `product_type`, `products`.`product_status` AS `product_status`, `category`.`ctg_name` AS `ctg_name`, `category`.`ctg_des` AS `ctg_des`, `category`.`ctg_icon` AS `ctg_icon` FROM (`products` join `category` on(`products`.`product_ctg` = `category`.`ctg_id`)) ;
 
 --
 -- Indexes for dumped tables
@@ -178,7 +186,7 @@ ALTER TABLE `adminlog`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -190,7 +198,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

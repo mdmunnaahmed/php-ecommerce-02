@@ -41,7 +41,7 @@ if (isset($_GET['prostatus'])) {
                 <td><?php echo $ctg['product_id'] ?></td>
                 <td><?php echo $ctg['product_name'] ?></td>
                 <td>$<?php echo $ctg['product_price'] ?></td>
-                <td><?php echo $ctg['product_des'] ?></td>
+                <td class="product_des"><?php echo $ctg['product_des'] ?></td>
                 <td><img src="upload/<?php echo $ctg['product_img'] ?>" alt=""></td>
                 <td><?php echo $ctg['ctg_name'] ?></td>
                 <td><?php
