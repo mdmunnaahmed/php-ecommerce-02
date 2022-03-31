@@ -72,6 +72,10 @@ if (isset($_GET['adminLogout'])) {
                                                 include("views/add-brand-view.php");
                                             } else if ("manage-brand" == $views) {
                                                 include("views/manage-brand-view.php");
+                                            } else if ("add-subcategory" == $views) {
+                                                include("views/add-subcategory-view.php");
+                                            } else if ("manage-subcategory" == $views) {
+                                                include("views/manage-subcategory-view.php");
                                             }
                                         }
 

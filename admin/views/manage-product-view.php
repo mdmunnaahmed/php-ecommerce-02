@@ -12,11 +12,6 @@ if (isset($_GET['prostatus'])) {
 
 
 <h2 class="">Manage Category</h2>
-<p class="alert">
-    <?php if (isset($msg)) {
-        echo $msg;
-    } ?>
-</p>
 
 <table class="table bg-white">
     <thead>

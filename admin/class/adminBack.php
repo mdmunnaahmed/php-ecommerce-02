@@ -64,6 +64,22 @@ class adminBack
             return $message;
         }
     }
+    function add_sub_category($data)
+    {
+        $parent_sub_ctg = $data['parent_sub_ctg'];
+        $sub_ctg_name = $data['sub_ctg_name'];
+        $sub_ctg_des = $data['sub_ctg_des'];
+
+        $query = "INSERT INTO sub_category(parent_sub_ctg, sub_ctg_name, sub_ctg_des) VALUE ('$parent_sub_ctg', '$sub_ctg_name', '$sub_ctg_des')";
+
+        if (mysqli_query($this->conn, $query)) {
+            $message = "Sub Category Added Successfully";
+            return $message;
+        } else {
+            $message = "Failded to Add Sub Categroy";
+            return $message;
+        }
+    }
 
     function displayCategory()
     {
