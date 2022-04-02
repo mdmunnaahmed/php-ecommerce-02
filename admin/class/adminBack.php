@@ -265,6 +265,23 @@ class adminBack
         }
     }
 
+    function countProducts()
+    {
+        $query = "SELECT * FROM products_details_info";
+        if (mysqli_query($this->conn, $query)) {
+            $product = mysqli_query($this->conn, $query);
+            return $product;
+        }
+    }
+    function countCategory()
+    {
+        $query = "SELECT * FROM category";
+        if (mysqli_query($this->conn, $query)) {
+            $product = mysqli_query($this->conn, $query);
+            return $product;
+        }
+    }
+
     function displayFeatureProduct()
     {
         $query = "SELECT * FROM products_details_info WHERE product_type = 1";

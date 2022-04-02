@@ -12,6 +12,7 @@ if (isset($_POST['brand_btn'])) {
 <?php if (isset($msg)) {
     echo $msg;
 } ?>
+
 <form action="#0" name="ctg-form" method="POST" class="ctg-form w-100">
     <div class="form-group">
         <label for="brand_name" class="form-label">Brand Name</label>
