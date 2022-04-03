@@ -22478,6 +22478,9 @@ form {
     padding: 30px;
     background: #fff;
 }
+.input-group .form-control {
+    width: 100%;
+}
 .ctg-form {
     max-width: 720px;
     background: #fff;

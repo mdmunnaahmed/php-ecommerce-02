@@ -217,7 +217,19 @@ class adminBack
         }
     }
 
-
+    function add_add_info($data)
+    {
+        $add_info_title = $_POST['add_info_title'];
+        $add_info_value = $_POST['add_info_value'];
+        $query = "INSERT INTO product_add_info(add_info_title, add_info_value) VALUE ('$add_info_title', '$add_info_value')";
+        if (mysqli_query($this->conn, $query)) {
+            $msg = "Added";
+            return $msg;
+        } else {
+            $msg = "Faild to add";
+            return $msg;
+        }
+    }
     function addProduct($recieve_data)
     {
         $product_name = $recieve_data['product_name'];

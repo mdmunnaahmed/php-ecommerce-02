@@ -1,8 +1,11 @@
 <?php
 $obj_adminBack = new adminBack();
 $ctg_info = $obj_adminBack->publishedDisplayCategory();
-if (isset($_POST['product_btn'])) {
-    $msg = $obj_adminBack->addProduct($_POST);
+// if (isset($_POST['product_btn'])) {
+//     $msg = $obj_adminBack->addProduct($_POST);
+// }
+if (isset($_POST['product_info_btn'])) {
+    $msg = $obj_adminBack->add_add_info($_POST);
 }
 
 ?>
@@ -122,5 +125,30 @@ if (isset($_POST['product_btn'])) {
             </div>
         </div>
     </div>
+
     <button name="product_btn" type="submit" class="btn btn-primary w-100 mb-2">Add Product</button>
+</form>
+
+<form action="" method="POST">
+    <h4 class="title">Additional Info</h4>
+    <div class="row mb-4" id="fileUploadsContainer">
+        <div class="col-12">
+            <div class="input-group ">
+                <div class="row w-100">
+                    <div class="col-md-5">
+                        <label>Title</label>
+                        <input name="add_info_title" type="text" class="form-control">
+                    </div>
+                    <div class="col-md-5">
+                        <label>Value</label>
+                        <input name="add_info_value" type="text" class="form-control">
+                    </div>
+                    <div class="col-md-2 align-self-end">
+                        <button type="button" class="add-form  btn btn-primary w-100 text-center"><i class="las la-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button name="product_info_btn" type="submit" class="btn btn-primary w-100 mb-2">Add Product</button>
 </form>

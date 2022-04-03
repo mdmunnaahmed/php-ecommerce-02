@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2022 at 06:27 AM
+-- Generation Time: Apr 03, 2022 at 03:45 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -65,6 +65,26 @@ INSERT INTO `banner` (`banner_id`, `banner_status`, `banner_img`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `brands`
+--
+
+CREATE TABLE `brands` (
+  `brand_id` int(11) NOT NULL,
+  `brand_name` varchar(255) NOT NULL,
+  `brand_icon` varchar(255) NOT NULL,
+  `brand_des` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `brands`
+--
+
+INSERT INTO `brands` (`brand_id`, `brand_name`, `brand_icon`, `brand_des`) VALUES
+(3, 'Apple', '<i class=\"lab la-apple\"></i>', 'Apple Inc. is an American multinational technology company that specializes in consumer electronics, software and online services. Apple is the largest');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `category`
 --
 
@@ -83,7 +103,26 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`ctg_id`, `ctg_icon`, `ctg_name`, `ctg_des`, `ctg_status`) VALUES
 (5, '<i class=\"lab la-apple\"></i>', 'Apple', 'Apple Inc. is an American multinational technology company that specializes in consumer electronics, software and online services. Apple is the largest ...', 1),
 (6, '<i class=\"las la-carrot\"></i>', 'Orange', 'An orange has a tough shiny orange skin that holds acid in outside layer. Inside, the fruit is divided into \"segments\", which have thin tough skins that hold ...', 1),
-(7, '<i class=\"las la-carrot\"></i>', 'Orange', 'An orange has a tough shiny orange skin that holds acid in outside layer. Inside, the fruit is divided into \"segments\", which have thin tough skins that hold ...', 1);
+(7, '<i class=\"las la-carrot\"></i>', 'Orange', 'An orange has a tough shiny orange skin that holds acid in outside layer. Inside, the fruit is divided into \"segments\", which have thin tough skins that hold ...', 1),
+(8, '<i class=\"lab la-apple\"></i>', 'Apple', 'Apple Inc. is an American multinational technology company that specializes in consumer electronics, software and online services. Apple is the largest', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `ctg_sub_ctg`
+-- (See below for the actual view)
+--
+CREATE TABLE `ctg_sub_ctg` (
+`ctg_id` int(11)
+,`ctg_icon` varchar(255)
+,`ctg_name` varchar(255)
+,`ctg_des` varchar(255)
+,`ctg_status` tinyint(200)
+,`sub_ctg_id` int(11)
+,`parent_sub_ctg` varchar(255)
+,`sub_ctg_name` varchar(255)
+,`sub_ctg_des` varchar(255)
+);
 
 -- --------------------------------------------------------
 
@@ -138,6 +177,60 @@ CREATE TABLE `products_details_info` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product_add_info`
+--
+
+CREATE TABLE `product_add_info` (
+  `add_info_id` int(11) NOT NULL,
+  `add_info_title` varchar(255) NOT NULL,
+  `add_info_value` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product_add_info`
+--
+
+INSERT INTO `product_add_info` (`add_info_id`, `add_info_title`, `add_info_value`) VALUES
+(6, 'aaa', 'aaa');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sub_category`
+--
+
+CREATE TABLE `sub_category` (
+  `sub_ctg_id` int(11) NOT NULL,
+  `parent_sub_ctg` varchar(255) NOT NULL,
+  `sub_ctg_name` varchar(255) NOT NULL,
+  `sub_ctg_des` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sub_category`
+--
+
+INSERT INTO `sub_category` (`sub_ctg_id`, `parent_sub_ctg`, `sub_ctg_name`, `sub_ctg_des`) VALUES
+(1, '6', 'submit', 'korem aosdmf asdfa dsdfsaodf'),
+(2, '6', 'submit', 'korem aosdmf asdfa dsdfsaodf'),
+(3, '6', 'submit', 'korem aosdmf asdfa dsdfsaodf'),
+(4, '6', 'submit', 'korem aosdmf asdfa dsdfsaodf'),
+(5, '8', 'asdf', 'asdf'),
+(6, '7', 'asdf', 'asdf'),
+(7, '5', 'Mobile', 'this is one of mobile\r\n');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `ctg_sub_ctg`
+--
+DROP TABLE IF EXISTS `ctg_sub_ctg`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ctg_sub_ctg`  AS SELECT `category`.`ctg_id` AS `ctg_id`, `category`.`ctg_icon` AS `ctg_icon`, `category`.`ctg_name` AS `ctg_name`, `category`.`ctg_des` AS `ctg_des`, `category`.`ctg_status` AS `ctg_status`, `sub_category`.`sub_ctg_id` AS `sub_ctg_id`, `sub_category`.`parent_sub_ctg` AS `parent_sub_ctg`, `sub_category`.`sub_ctg_name` AS `sub_ctg_name`, `sub_category`.`sub_ctg_des` AS `sub_ctg_des` FROM (`category` join `sub_category` on(`category`.`ctg_id` = `sub_category`.`parent_sub_ctg`)) ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `products_details_info`
 --
 DROP TABLE IF EXISTS `products_details_info`;
@@ -161,6 +254,12 @@ ALTER TABLE `banner`
   ADD PRIMARY KEY (`banner_id`);
 
 --
+-- Indexes for table `brands`
+--
+ALTER TABLE `brands`
+  ADD PRIMARY KEY (`brand_id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -171,6 +270,18 @@ ALTER TABLE `category`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indexes for table `product_add_info`
+--
+ALTER TABLE `product_add_info`
+  ADD PRIMARY KEY (`add_info_id`);
+
+--
+-- Indexes for table `sub_category`
+--
+ALTER TABLE `sub_category`
+  ADD PRIMARY KEY (`sub_ctg_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -189,16 +300,34 @@ ALTER TABLE `banner`
   MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `brands`
+--
+ALTER TABLE `brands`
+  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `ctg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ctg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `product_add_info`
+--
+ALTER TABLE `product_add_info`
+  MODIFY `add_info_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `sub_category`
+--
+ALTER TABLE `sub_category`
+  MODIFY `sub_ctg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
