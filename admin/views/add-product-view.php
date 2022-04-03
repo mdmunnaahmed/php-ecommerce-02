@@ -20,13 +20,13 @@ if (isset($_POST['product_info_btn'])) {
         <div class="col-md-6 col-lg-4">
             <div class="form-group">
                 <label for="product_name" class="form-label">Product Name</label>
-                <input name="product_name" id="product_name" type="text" class="form-control" placeholder="Enter Product Name" required>
+                <input name="product_name" id="product_name" type="text" class="form-control" placeholder="Enter Product Name">
             </div>
         </div>
         <div class="col-md-6 col-lg-4">
             <div class="form-group">
                 <label for="product_sku" class="form-label">Product SKU</label>
-                <input name="product_sku" id="product_sku" type="text" class="form-control" placeholder="Enter SKU" required>
+                <input name="product_sku" id="product_sku" type="text" class="form-control" placeholder="Enter SKU">
             </div>
         </div>
 
@@ -52,48 +52,66 @@ if (isset($_POST['product_info_btn'])) {
         <div class="col-md-6 col-lg-4">
             <div class="form-group">
                 <label for="product_price" class="form-label">Product Price</label>
-                <input name="product_price" id="product_price" type="number" class="form-control" placeholder="Enter Product Price  " required>
+                <input name="product_price" id="product_price" type="number" class="form-control" placeholder="Enter Product Price  ">
             </div>
         </div>
         <div class="col-md-6 col-lg-4">
             <div class="form-group">
                 <label for="d_product_price" class="form-label">Discount Product Price</label>
-                <input name="d_product_price" id="d_product_price" type="number" class="form-control" placeholder="Enter Product Price  " required>
+                <input name="d_product_price" id="d_product_price" type="number" class="form-control" placeholder="Enter Product Price  ">
             </div>
         </div>
         <div class="col-md-6 col-lg-4">
             <div class="form-group">
                 <label for="product_qty" class="form-label">Product Quantity</label>
-                <input name="product_qty" id="product_qty" type="number" class="form-control" placeholder="Enter Product Quantity" required>
+                <input name="product_qty" id="product_qty" type="number" class="form-control" placeholder="Enter Product Quantity">
             </div>
         </div>
         <div class="col-md-6 col-lg-4">
             <div class="form-group">
                 <label for="product_des" class="form-label">Product Description</label>
-                <textarea rows="3" name="product_des" id="product_des" class="form-control" placeholder="Enter Product Description" required></textarea>
+                <textarea rows="3" name="product_des" id="product_des" class="form-control" placeholder="Enter Product Description"></textarea>
             </div>
         </div>
         <div class="col-md-6 col-lg-4">
             <div class="form-group">
                 <label for="product_sum" class="form-label">Product Summery</label>
-                <textarea rows="3" name="product_sum" id="product_sum" class="form-control" placeholder="Enter Product Summery" required></textarea>
+                <textarea rows="3" name="product_sum" id="product_sum" class="form-control" placeholder="Enter Product Summery"></textarea>
             </div>
         </div>
         <div class="col-md-6 col-lg-4">
             <div class="form-group">
                 <label for="product_img" class="form-label">Product Image</label>
-                <input name="product_img" id="product_img" type="file" class="form-control" placeholder="Enter Product Image" required>
+                <input name="product_img" id="product_img" type="file" class="form-control" placeholder="Enter Product Image">
             </div>
         </div>
         <div class="col-md-6 col-lg-4">
             <div class="form-group">
                 <label for="product_type" class="form-label">Product Type / <span class="text-primary">Add Product As</span></label>
-                <select name="product_type" id="product_type" class="form-control">
+                <select name="product_type" id="product_type" class="form-control d-none">
                     <option value="1">Featured</option>
                     <option value="2">Hot Deals</option>
                     <option value="3">Tranding</option>
                     <option value="4">Latest</option>
                 </select>
+                <div class="d-flex justify-content-between">
+                    <div class="input-group align-items-center">
+                        <input type="checkbox" class="form-check mb-0" id="featured">
+                        <label for="featured" class="featured mb-0 ml-2">Featured</label>
+                    </div>
+                    <div class="input-group align-items-center">
+                        <input type="checkbox" class="form-check mb-0" id="hot-deals">
+                        <label for="hot-deals" class="hot-deals mb-0 ml-2">Hot Deals</label>
+                    </div>
+                    <div class="input-group align-items-center">
+                        <input type="checkbox" class="form-check mb-0" id="tranding">
+                        <label for="tranding" class="tranding mb-0 ml-2">Tranding</label>
+                    </div>
+                    <div class="input-group align-items-center">
+                        <input type="checkbox" class="form-check mb-0" id="latest">
+                        <label for="latest" class="latest mb-0 ml-2">Latest</label>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-6 col-lg-4">
